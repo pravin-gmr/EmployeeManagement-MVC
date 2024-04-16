@@ -1,0 +1,172 @@
+﻿
+@{
+    ViewBag.Title = "Employee Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .select2-selection.select2-selection--single {
+        height: 38px;
+        padding: 0.175rem 0.25rem;
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 36px;
+        width: 25px;
+    }
+</style>
+<main>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">
+                        Employee Detail
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <img class="img-lg img-thumbnail card-description" id="imgProfile" height="150" width="150"
+                                     src="~/Uploads/Employee/default.png" alt="Profile Picture" />
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group req">
+                                        <label>First Name</label>
+                                        <input type="text" id="txtFirstName" class="form-control" placeholder="First Name"
+                                               onkeypress="return /[0-9a-zA-Z]/i.test(event.key)"
+                                               data-type="text" data-msg="Please enter first name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input type="text" id="txtLastName" class="form-control" placeholder="Last Name"
+                                               onkeypress="return /[0-9a-zA-Z]/i.test(event.key)"
+                                               data-type="text" data-msg="Please enter last name" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group req">
+                                        <label>Email Address</label>
+                                        <input type="email" id="txtEmail" class="form-control" placeholder="Email Address"
+                                               data-type="email" data-msg="Please enter email" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group req">
+                                        <label>Mobile Number</label>
+                                        <input type="text" id="txtMobile" class="form-control" placeholder="Mobile Number" required
+                                               data-type="phone" data-minlength="10" data-maxlength="10" data-msg="Please enter mobile" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group req">
+                                        <label>Pan Number</label>
+                                        <input type="text" id="txtPan" class="form-control" placeholder="Pan Number"
+                                               onkeypress="return /[0-9a-zA-Z]/i.test(event.key)" required style="text-transform: uppercase;"
+                                               data-type="text" minlength="10" maxlength="10" data-msg="Please enter pan number" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group req">
+                                        <label>Passport Number</label>
+                                        <input type="text" id="txtPassport" class="form-control" placeholder="Passport Number"
+                                               onkeypress="return /[0-9a-zA-Z]/i.test(event.key)" required style="text-transform: uppercase;"
+                                               data-type="text" data-msg="Please enter passport number" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group req">
+                                        <label>Date of Birth</label>
+                                        <input type="text" id="txtDOB" class="form-control" placeholder="mm/dd/yyyy" required
+                                               data-type="text" data-msg="Please enter date of birth" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group req">
+                                        <label>Date of Joinee</label>
+                                        <input type="text" id="txtDOJ" class="form-control" placeholder="mm/dd/yyyy" required
+                                               data-type="text" data-msg="Please enter date of joinee" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group req">
+                                        <label>Country</label>
+                                        <select class="form-control select2" id="ddlCountry" data-type="dropdown" data-msg="Please select country">
+                                            <option value="0">-- Select Option --</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group req">
+                                        <label>State</label>
+                                        <select class="form-control select2" id="ddlState" data-type="dropdown" data-msg="Please select state">
+                                            <option value="0">-- Select Option --</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group req">
+                                        <label>City</label>
+                                        <select class="form-control select2" id="ddlCity" data-type="dropdown" data-msg="Please select city">
+                                            <option value="0">-- Select Option --</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group req" id="input_file">
+                                        <label>Profile Picture</label>
+                                        <input type="file" class="form-control" id="fileProfile" onchange="readURL(this)"
+                                               data-type="photoRequired" data-msg="Please select profile pic" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group req">
+                                        <label>Gender</label>
+                                        <div class="form-control" data-type="radio" data-name="gender" data-msg="Please select gender">
+                                            <input type="radio" name="gender" class="" value="1"> Male
+                                            <input type="radio" name="gender" class="" value="2"> Female
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group req">
+                                        <label>Active</label>
+                                        <div class="form-control">
+                                            <input type="checkbox" name="active" id="chkActive" class=""> Active
+                                        </div>
+                                    </div>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-success" id="btnSubmit">Submit</button>
+                                    <a href="/" class="btn btn-info" id="btnCancel">Back To Home</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts{
+    <script src="~/Content/js/employee_detail.js"></script>
+}

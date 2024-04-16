@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">
+                        Employee List
+
+                        <button class="btn btn-sm btn-primary" style="float:right;" onclick="NavigateToEmployeeDetail(0)">
+                            <i class="fa fa-user-plus"></i> Add New Employee
+                        </button>
+                    </h4>
+                </div>
+                <div class="card-body overflow-auto">
+                    @*<p class="lead">
+                            <button class="btn btn-sm btn-info" onclick="ExportToCSV('#tbAppender', 'User_Report_Date_Wise')">TO CSV</button>
+                            <button class="btn btn-sm btn-danger" onclick="ExportToPDF('#tbAppender', 'User_Report_Date_Wise')">TO PDF</button>
+                            <button class="btn btn-sm btn-primary" onclick="ExportToExcel('tbAppender', 'User_Report_Date_Wise')">TO Excel</button>
+                        </p>*@
+                    <table id="tbAppender" class="table table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Sr No.</th>
+                                <th>Email</th>
+                                <th>Country</th>
+                                <th>State</th>
+                                <th>City</th>
+                                <th>Pan No</th>
+                                <th>Passport No</th>
+                                <th>Gender</th>
+                                <th>IsActive</th>
+                                <th>Profile Image</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts{
+    <script src="~/Content/js/employee_list.js"></script>
+}
